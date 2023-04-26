@@ -14,5 +14,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnCreateNewUser" layoutX="61.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleCreateNewUser" text="Button" />
+      <Button fx:id="btnDeleteUser" layoutX="61.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleDeleteUser" text="DELETE USER TEST" />
    </children>
 </AnchorPane>

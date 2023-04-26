@@ -5,6 +5,7 @@ import main.java.BE.User;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class UserDAO implements main.java.DAL.IUserDataAccess {
 
         ArrayList<User> allTechnicians = new ArrayList<>();
         //SQL Query.
-        String sql = "SELECT * FROM Users WHERE Role = 4";
+        String sql = "SELECT * FROM Users WHERE Role = 1 AND Is_Deleted IS NULL";
         //Getting the connection to the database.
         try (Connection conn = databaseConnector.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -129,21 +130,28 @@ public class UserDAO implements main.java.DAL.IUserDataAccess {
         }
     }
 
+
+
     @Override
     public void deleteUser(User selectedUser) throws Exception {
+
+        LocalDate localDate = LocalDate.now();
         //SQL query.
-        String sql = "DELETE FROM Users WHERE ID = ?";
+        String sql = "UPDATE Users SET Is_Deleted = ? WHERE ID = ?";
         //Getting the connection to the database.
         try(Connection conn = databaseConnector.getConnection()){
             PreparedStatement stmt = conn.prepareStatement(sql);
             //Setting the parameter and executing the query.
-            stmt.setInt(1, selectedUser.getId());
+            stmt.setDate(1, Date.valueOf(localDate));
+            stmt.setInt(2, selectedUser.getId());
             stmt.execute();
         } catch (SQLException ex){
             ex.printStackTrace();
             throw new Exception("Could not delete this user", ex);
         }
     }
+
+
 
     }
 

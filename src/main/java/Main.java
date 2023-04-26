@@ -6,11 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate);
 
 
         FXMLLoader loader = new FXMLLoader();

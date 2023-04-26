@@ -17,6 +17,7 @@ public class UserModel {
         userManager = new UserManager();
         allTechnicians = FXCollections.observableArrayList();
         allTechnicians.addAll(userManager.loadTechnicians());
+        System.out.println(allTechnicians.size());
     }
 
     public List<main.java.BE.User> loadUser(String name)throws Exception{return userManager.loadUser(name);}
