@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import GUI.Model.FacadeModel;
 import GUI.Model.UserModel;
+import PersonsTypes.PersonTypeChooser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ public class LoginController extends BaseController {
     @FXML
     private ImageView logoImgViewLogin;
 
+    private PersonTypeChooser personTypeChooser;
     private UserModel userModel;
     private main.java.BE.User user;
 
@@ -43,12 +45,21 @@ public class LoginController extends BaseController {
             //Check if the database password matches the user password, else show error.
             if(BCrypt.checkpw(password, user.getPassword())) {
                 userModel.setLoggedinUser(user);
+                chooseUserType();
+
                 openMainWindow();
             }
             else{
                 loginFailedAlert();
             }
         }
+    }
+
+    private void chooseUserType() {
+
+        personTypeChooser=new PersonTypeChooser();
+        personTypeChooser.chooseType("ProjectManager");
+
     }
 
     private void loginFailedAlert(){
@@ -61,7 +72,7 @@ public class LoginController extends BaseController {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/main/java/GUI/View/MainView.fxml"));
+        loader.setLocation(getClass().getResource(personTypeChooser.getViewString()));
         Parent root = loader.load();
 
         MainController controller = loader.getController();
@@ -78,5 +89,9 @@ public class LoginController extends BaseController {
     public void setup() {
         userModel = getModel().getUserModel();
         logoImgViewLogin.setImage(new Image("Pictures/WuavLogo.png"));
+
+
+
+
     }
 }
