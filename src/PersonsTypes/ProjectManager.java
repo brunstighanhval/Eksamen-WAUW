@@ -4,6 +4,6 @@ public class ProjectManager implements IPersonTypes{
 
     @Override
     public String getViewString() {
-        return "/main/java/GUI/View/ProjectManager/ManagerView.fxml";
+        return "/GUI/View/ProjectManager/ManagerView.fxml";
     }
 }

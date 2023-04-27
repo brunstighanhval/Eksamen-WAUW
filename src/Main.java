@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.time.LocalDate;
 
 public class Main extends Application {
@@ -18,7 +17,7 @@ public class Main extends Application {
 
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("main/java/GUI/View/LoginView.fxml"));
+        loader.setLocation(getClass().getResource("/GUI/View/LoginView.fxml"));
         Parent root = loader.load();
 
         LoginController controller = loader.getController();
