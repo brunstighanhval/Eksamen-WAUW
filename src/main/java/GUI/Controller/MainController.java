@@ -13,7 +13,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController extends BaseController{
+public class MainController extends BaseController {
     @FXML
     private TableView<main.java.BE.User> tblvTechnicians;
     @FXML
@@ -23,10 +23,12 @@ public class MainController extends BaseController{
 
     private UserModel userModel;
 
+
     @Override
     public void setup() throws Exception {
         userModel = getModel().getUserModel();
 
+        /*
         tblvTechnicians.setItems(userModel.getAllTechnicians());
         clmFirstName.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getFirstName()));
         clmLastName.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getLastName()));
@@ -37,7 +39,9 @@ public class MainController extends BaseController{
 
     }
 
+*/
 
+    /*
     public void handleCreateNewUser(ActionEvent actionEvent) {
         try {
             //Binding all the data to the variables.
@@ -65,4 +69,7 @@ public class MainController extends BaseController{
         userModel.deleteUser(selectedUser);
     }
 
+*/
+
+    }
 }
